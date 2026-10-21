@@ -1,5 +1,5 @@
 # ==========================================
-# MAIN PROGRAM - FLL UNEARTHED 2025
+# MAIN PROGRAM - FLL BIOGLOW 2026
 # ==========================================
 
 # ---- IMPORTS ----
@@ -15,33 +15,33 @@ hub = PrimeHub()
 # ==========================================
 # ROBOT INFO
 # ==========================================
-# Left wheel motor          : Port B (COUNTERCLOCKWISE)
-# Right wheel motor         : Port F (CLOCKWISE)
-# Front attachment motor    : Port A
-# Back attachment motor     : Port E
-# Color sensor (bottom)     : Port D - line following
-# Color sensor (top)        : Port C - mission select by lego color
+# Left wheel motor          : Port A (COUNTERCLOCKWISE)
+# Right wheel motor         : Port E (CLOCKWISE)
+# Front attachment motor    : Port B
+# Back attachment motor     : Port F
+# Color sensor (bottom)     : Port D - line following (not implemented)
+# Color sensor (top)        : Port C - mission select by lego color (not implemented)
 #
 # Wheel diameter  : 62.4 mm
 # Axle track      : 108.204 mm
 #
 # COLOR TO MISSION MAP:
-# Yellow -> Mission 0 : Smashy (Silo)
-# Black  -> Mission 1 : Heavy Lifting
-# Green  -> Mission 2 : Marked Down
-# My Red    -> Mission 3 : Angler Statue
-# Blue   -> Mission 5 : Soil
-# White  -> Mission 6 : Careful Recovery / Mineshaft
-# Orange -> Mission 7 : Forum Delivery
+# Yellow -> Run 0 : Extra Katydid
+# Black  -> Run 1 : Drone Survey (1), Exploding Seeds (2)
+# Green  -> Run 2 : Flip the Rock (3), Lucky Leaves (4), Reaching Roots (5)
+# My Red -> Run 3 : 
+# Blue   -> Run 4 : 
+# White  -> Run 5 : 
+# Orange -> Run 6 : Seeds of Renewal (?)
 # ==========================================
 
 # ---- DRIVE MOTORS ----
-front_left_wheel  = Motor(Port.B, Direction.COUNTERCLOCKWISE)
-front_right_wheel = Motor(Port.F, Direction.CLOCKWISE)
+front_left_wheel  = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+front_right_wheel = Motor(Port.E, Direction.CLOCKWISE)
 
 # ---- ATTACHMENT MOTORS ----
-front_attachment = Motor(Port.A)
-back_attachment  = Motor(Port.E)
+front_attachment = Motor(Port.B)
+back_attachment  = Motor(Port.F)
 
 # ---- COLOR SENSOR ----
 # Top sensor on Port C - reads the color of a LEGO brick to pick the mission
@@ -102,55 +102,54 @@ def reset_robot():
 
 def mission_0():
     reset_robot()
-    import A0_Heavy_Lifting_Canada_with_Smashy
-    A0_Heavy_Lifting_Canada_with_Smashy.run(robot, front_attachment, back_attachment)
+    #Insert code for mission 0 here (Extra Katydid) if needed
 
 def mission_1():
     reset_robot()
-    import A1_Marky_Mark_Canada
-    A1_Marky_Mark_Canada.run(robot, front_attachment, back_attachment)
+    import R1_Drone_Exploding
+    R1_Drone_Exploding.run(robot, front_attachment, back_attachment)
 
 def mission_2():
     reset_robot()
-    import A2_Anglar_Canada_4002
-    A2_Anglar_Canada_4002.run(robot, front_attachment, back_attachment)
+    #Insert code for mission 2 here (Flip the Rock, Lucky Leaves, Reaching Roots) if needed 
 
-def mission_3():
-    reset_robot()
-    import A3_Statue_Delivery_Canada
-    A3_Statue_Delivery_Canada.run(robot, front_attachment, back_attachment)
-
-def mission_4():
-    reset_robot()
-    import A4_Shipwreck
-    A4_Shipwreck.run(robot, front_attachment, back_attachment)
-
-def mission_5():
-    reset_robot()
-    import A5_Soil
-    A5_Soil.run(robot, front_attachment, back_attachment)
+# ---- OLD SEASON MISSIONS (not used this year) ----
+# def mission_3():
+#     reset_robot()
+#     import A3_Statue_Delivery_Canada
+#     A3_Statue_Delivery_Canada.run(robot, front_attachment, back_attachment)
+#
+# def mission_4():
+#     reset_robot()
+#     import A4_Shipwreck
+#     A4_Shipwreck.run(robot, front_attachment, back_attachment)
+#
+# def mission_5():
+#     reset_robot()
+#     import A5_Soil
+#     A5_Soil.run(robot, front_attachment, back_attachment)
 
 def mission_6():
     reset_robot()
-    import A6_Careful_Recovery_Mineshaft
-    A6_Careful_Recovery_Mineshaft.run(robot, front_attachment, back_attachment)
+    #Insert code for mission 6 here (Seeds of Renewal) if needed
+    # import A6_Careful_Recovery_Mineshaft
+    # A6_Careful_Recovery_Mineshaft.run(robot, front_attachment, back_attachment)
 
-def mission_7():
-    reset_robot()
-    import A7_Forum_Delivery
-    A7_Forum_Delivery.run(robot, front_attachment, back_attachment)
-
-#New Alliance Statue
-def mission_8():
-    reset_robot()
-    import A3_Statue_Delivery_Alliance
-    A3_Statue_Delivery_Alliance.run(robot, front_attachment, back_attachment)
-    
-#Smashy Code in Case Needed
-def mission_9():
-    reset_robot()
-    import A9_Smashy_Silo_Alliance_Backup
-    A9_Smashy_Silo_Alliance_Backup.run(robot, front_attachment, back_attachment)
+# def mission_7():
+#     reset_robot()
+#     import A7_Forum_Delivery
+#     A7_Forum_Delivery.run(robot, front_attachment, back_attachment)
+#
+# def mission_8():
+#     reset_robot()
+#     import A3_Statue_Delivery_Alliance
+#     A3_Statue_Delivery_Alliance.run(robot, front_attachment, back_attachment)
+#
+# #Smashy Code in Case Needed
+# def mission_9():
+#     reset_robot()
+#     import A9_Smashy_Silo_Alliance_Backup
+#     A9_Smashy_Silo_Alliance_Backup.run(robot, front_attachment, back_attachment)
 
 # ==========================================
 # COLOR TO MISSION LOOKUP
@@ -172,21 +171,22 @@ def run_by_color():
     elif detected == MY_GREEN:
         print("Running: Mission 2 - Angler")
         mission_2()
-    elif detected == MY_YELLOW:
-        print("Running: Mission 4 - Statue")
-        mission_3()
-    elif detected == MY_BLUE:
-        print("Running: Mission 5 - Shipwrek")
-        mission_4()
-    elif detected == MY_DARK_GRAY:
-        print("Running: Mission 6 - Soil")
-        mission_5()
-    elif detected == Color.WHITE:
-        print("Running: Mission 7 - Careful Recovery / Mineshaft")
-        mission_6()
-    elif detected == MY_ORANGE:
-        print("Running: Mission 8 - Forum Delivery")
-        mission_7()
+    # ---- OLD SEASON COLORS (not used this year) ----
+    # elif detected == MY_YELLOW:
+    #     print("Running: Mission 4 - Statue")
+    #     mission_3()
+    # elif detected == MY_BLUE:
+    #     print("Running: Mission 5 - Shipwrek")
+    #     mission_4()
+    # elif detected == MY_DARK_GRAY:
+    #     print("Running: Mission 6 - Soil")
+    #     mission_5()
+    # elif detected == Color.WHITE:
+    #     print("Running: Mission 7 - Careful Recovery / Mineshaft")
+    #     mission_6()
+    # elif detected == MY_ORANGE:
+    #     print("Running: Mission 8 - Forum Delivery")
+    #     mission_7()
     else:
         print("Color not recognised! Got:", detected, "- flashing red")
         hub.light.on(Color.RED)
@@ -211,7 +211,8 @@ selected = "C"  # Start on color mode by default
 while True:
 
     # "C" = color sensor mode, numbers = manual fallback
-    all_options = ["C", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    # all_options = ["C", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]  # old season
+    all_options = ["C", "0", "1", "2", "6"]
     idx = all_options.index(selected)
     ordered = all_options[idx:] + all_options[:idx]
 
@@ -230,20 +231,20 @@ while True:
             mission_1()
         elif selected == "2":
             mission_2()
-        elif selected == "3":
-            mission_3()
-        elif selected == "4":
-            mission_4()
-        elif selected == "5":
-            mission_5()
+        # elif selected == "3":
+        #     mission_3()
+        # elif selected == "4":
+        #     mission_4()
+        # elif selected == "5":
+        #     mission_5()
         elif selected == "6":
             mission_6()
-        elif selected == "7":
-            mission_7()
-        elif selected == "8":
-            mission_8()
-        elif selected == "9":
-            mission_9()
+        # elif selected == "7":
+        #     mission_7()
+        # elif selected == "8":
+        #     mission_8()
+        # elif selected == "9":
+        #     mission_9()
 
         # Wait 1 second after mission finishes before showing menu again
         # This prevents accidental double presses from relaunching the mission!

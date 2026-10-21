@@ -10,10 +10,10 @@ hub = PrimeHub()
 
 #Robot Info
 
-#front left motor wheel - port B
-#front attachment motor - port A
-#back attachment motor - port E
-#front right motor wheel - port F
+#front left motor wheel - port A
+#front attachment motor - port B
+#back attachment motor - port F
+#front right motor wheel - port E
 #color sensor - port D
 #color sensor - port C
 
@@ -24,12 +24,12 @@ hub = PrimeHub()
 
 # ---- DRIVE MOTORS ----
 # Set the positive direction for each motor based on how they're mounted
-front_left_wheel = Motor(Port.B, Direction.COUNTERCLOCKWISE)
-front_right_wheel = Motor(Port.F, Direction.CLOCKWISE)
+front_left_wheel = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+front_right_wheel = Motor(Port.E, Direction.CLOCKWISE)
 
 # ---- ATTACHMENT MOTORS ----
-front_attachment = Motor(Port.A)
-back_attachment = Motor(Port.E)
+front_attachment = Motor(Port.B)
+back_attachment = Motor(Port.F)
 
 # ---- DRIVE BASE ----
 robot = DriveBase(front_left_wheel, front_right_wheel,

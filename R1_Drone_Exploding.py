@@ -7,10 +7,10 @@
 #                                              TOTAL = 60 pts!
 #
 # ROBOT INFO
-# Left wheel motor          : Port B (COUNTERCLOCKWISE)
-# Right wheel motor         : Port F (CLOCKWISE)
-# Front attachment motor    : Port A
-# Back attachment motor     : Port E
+# Left wheel motor          : Port A (COUNTERCLOCKWISE)
+# Right wheel motor         : Port E (CLOCKWISE)
+# Front attachment motor    : Port B
+# Back attachment motor     : Port F
 # Color sensor (bottom)     : Port D - line following
 # Color sensor (top)        : Port C - mission select by lego color (coming soon!)
 #
