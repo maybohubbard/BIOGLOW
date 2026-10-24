@@ -10,18 +10,20 @@ hub = PrimeHub()
 hub.display.text("INIT")
 
 # ROBOT MOTOR SETUP:
-# Port B - Left wheel (COUNTERCLOCKWISE)
-# Port F - Right wheel (CLOCKWISE)
-# Port A - Front attachment
-# Port E - Back attachment
+# Port A - Left wheel (COUNTERCLOCKWISE)
+# Port E - Right wheel (CLOCKWISE)
+# Port B - Front attachment
+# Port F - Back attachment
+# Port D - Color sensor (bottom) - line following (not implemented)
+# Port C - Color sensor (top) - mission select by lego color (not implemented)
 
 # Initialize drive motors
-left_motor = Motor(Port.B, positive_direction=Direction.COUNTERCLOCKWISE)
-right_motor = Motor(Port.F, positive_direction=Direction.CLOCKWISE)
+left_motor = Motor(Port.A, positive_direction=Direction.COUNTERCLOCKWISE)
+right_motor = Motor(Port.E, positive_direction=Direction.CLOCKWISE)
 
 # Initialize attachment motors
-front_attach = Motor(Port.A)
-back_attach = Motor(Port.E)
+front_attach = Motor(Port.B)
+back_attach = Motor(Port.F)
 
 # Initialize Xbox controller
 hub.display.text("CTRL")
@@ -77,7 +79,7 @@ while True:
         else:
             drive_base.stop()
         
-        # FRONT ATTACHMENT CONTROLS (Port A)
+        # FRONT ATTACHMENT CONTROLS (Port B)
         # A button = forward, B button = backward
         if Button.A in buttons:
             front_attach.run(800)
@@ -86,7 +88,7 @@ while True:
         else:
             front_attach.stop()
         
-        # BACK ATTACHMENT CONTROLS (Port E)
+        # BACK ATTACHMENT CONTROLS (Port F)
         # X button = forward, Y button = backward
         if Button.X in buttons:
             back_attach.run(800)
